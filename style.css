@@ -1,0 +1,291 @@
+/* Reset dasar dan gaya global */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #eef2ff; font-family: 'Segoe UI', 'Poppins', Roboto, sans-serif; }
+
+/* Halaman login dengan latar gradien dan efek gelombang */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0b2b40, #1a4a6f, #2c7da0);
+    background-attachment: fixed;
+    position: relative;
+}
+/* Efek dekoratif SVG di halaman login */
+.login-page::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: cover;
+    opacity: 0.3;
+    pointer-events: none;
+}
+/* Kartu login dengan efek blur dan bayangan */
+.login-card {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(2px);
+    border-radius: 2rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: transform 0.2s;
+}
+.login-card:hover { transform: translateY(-5px); }
+
+/* Gaya untuk dashboard utama */
+.dashboard-page { background: #eef2ff; min-height: 100vh; }
+/* Sidebar dengan gradien biru gelap */
+.sidebar {
+    background: linear-gradient(180deg, #0a2f44, #0b3b5f);
+    color: #e0f2fe;
+    border-radius: 0 28px 28px 0;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 1.5rem 0;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+}
+.sidebar .brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0 1.5rem 1.2rem;
+    border-bottom: 1px solid #2c5a7a;
+    margin-bottom: 1.8rem;
+    color: white;
+}
+.sidebar .nav-link {
+    color: #cbd5e6;
+    padding: 0.7rem 1.5rem;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+.sidebar .nav-link:hover, .sidebar .nav-link.active { background: #2c7da0; color: white; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.main-content { padding: 1.8rem 2rem; }
+.top-nav {
+    background: white;
+    border-radius: 28px;
+    padding: 0.8rem 1.8rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(44,125,160,0.2);
+}
+/* Container tabel dengan scroll responsif */
+.card-table {
+    background: white;
+    border-radius: 24px;
+    padding: 1.2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #d9e6f2;
+    transition: all 0.2s;
+    overflow-x: auto;
+}
+/* Tombol utama dengan gradien */
+.btn-primary {
+    background: linear-gradient(95deg, #1e6f9f, #0e4b6e);
+    border: none;
+    border-radius: 40px;
+    padding: 0.4rem 1.2rem;
+    transition: all 0.2s;
+}
+.btn-primary:hover { background: #0f5b87; transform: translateY(-2px); box-shadow: 0 5px 12px rgba(30,111,159,0.3); }
+.btn-outline-primary {
+    border-color: #1e6f9f;
+    color: #1e6f9f;
+    border-radius: 40px;
+}
+.btn-outline-primary:hover { background: #1e6f9f; color: white; }
+.btn-success {
+    background: #1f8a4c;
+    border-radius: 40px;
+}
+.btn-info {
+    background: #2c7da0;
+    border-color: #2c7da0;
+    border-radius: 40px;
+}
+.btn-danger {
+    border-radius: 40px;
+}
+footer { text-align: center; margin-top: 2rem; font-size: 0.8rem; color: #4a627a; }
+/* Responsif untuk layar kecil: sidebar dipersempit */
+@media (max-width: 768px) {
+    .sidebar { width: 80px; overflow: hidden; }
+    .sidebar .brand span, .sidebar .nav-link span:not(.icon-only) { display: none; }
+    .main-content { padding: 1rem; }
+}
+.password-field { padding-right: 40px; }
+.badge.bg-warning { background-color: #f59e0b !important; }
+.badge.bg-success { background-color: #10b981 !important; }
+.table th, .table td { vertical-align: middle; white-space: nowrap; }
+.table th { background-color: #e6f4ff; color: #0a2f44; font-weight: 600; }
+.btn-sm { border-radius: 30px; }
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #d9e6f2; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: #1e6f9f; border-radius: 10px; }
+
+/* Modal registrasi custom (tanpa Bootstrap) */
+.register-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+.register-modal.active { display: flex; }
+@keyframes fadeIn {
+    from { opacity: 0; backdrop-filter: blur(0); }
+    to { opacity: 1; backdrop-filter: blur(8px); }
+}
+.register-modal-content {
+    background: linear-gradient(145deg, #ffffff, #f8fcff);
+    border-radius: 2rem;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transform: translateY(20px);
+    animation: slideUp 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    border: 1px solid rgba(30,111,159,0.2);
+}
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.register-header {
+    background: linear-gradient(135deg, #1e6f9f, #0e4b6e);
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+.register-header h3 {
+    color: white;
+    font-weight: 700;
+    margin: 0;
+    font-size: 1.6rem;
+}
+.register-header p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+    margin: 0.3rem 0 0;
+}
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.close-modal:hover {
+    background: rgba(255,255,255,0.4);
+    transform: rotate(90deg);
+}
+.register-body {
+    padding: 2rem 1.8rem 1.8rem;
+}
+.input-group-modern {
+    margin-bottom: 1.3rem;
+    position: relative;
+}
+.input-group-modern label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #1e6f9f;
+    margin-bottom: 0.4rem;
+    display: block;
+    letter-spacing: 0.5px;
+}
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.input-icon-wrapper i:first-child {
+    position: absolute;
+    left: 15px;
+    color: #1e6f9f;
+    font-size: 1rem;
+    z-index: 2;
+}
+.input-icon-wrapper input {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 2.8rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 60px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    background: #fff;
+}
+.input-icon-wrapper input:focus {
+    border-color: #1e6f9f;
+    box-shadow: 0 0 0 3px rgba(30,111,159,0.2);
+    outline: none;
+}
+/* Ikon mata untuk toggle password di dalam input */
+.toggle-password-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #1e6f9f;
+    font-size: 1rem;
+    z-index: 5;
+    background: transparent;
+}
+.register-btn {
+    background: linear-gradient(95deg, #1e6f9f, #0e4b6e);
+    border: none;
+    border-radius: 60px;
+    padding: 0.85rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    width: 100%;
+    transition: all 0.2s;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(30,111,159,0.3);
+}
+.register-footer {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: #64748b;
+}
