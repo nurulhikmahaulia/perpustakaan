@@ -21,7 +21,7 @@ const booksCol = collection(db, "books");
 const loansCol = collection(db, "loans");
 const returnsCol = collection(db, "returns");
 const finesCol = collection(db, "fines");
-const DENDA_PER_HARI = 1000;
+const DENDA_PER_HARI = 2000; // DENDA DIUBAH MENJADI RP 2.000 PER HARI
 
 let currentUser = null; // Menyimpan data user yang sedang login
 
@@ -140,9 +140,9 @@ async function safeReturnBook(loanId, bookId) {
         const todayStr = new Date().toISOString().split('T')[0];
         const { daysLate, denda } = hitungDenda(dueDate, todayStr);
         if (denda > 0) {
-            const confirmDenda = await Swal.fire({ title: "⚠️ Keterlambatan Pengembalian", html: `<p>Terlambat <strong>${daysLate} hari</strong>.</p><p>Denda: <strong class="text-danger">Rp ${denda.toLocaleString()}</strong></p>`, icon: "warning", confirmButtonText: "Konfirmasi & Kembalikan", showCancelButton: true });
+            const confirmDenda = await Swal.fire({ title: "⚠️ Keterlambatan Pengembalian", html: `<p>Terlambat <strong>${daysLate} hari</strong>.</p><p>Denda: <strong class="text-danger">Rp ${denda.toLocaleString()}</strong></p><p class="text-muted mt-2 small">*Denda Rp 2.000 per hari keterlambatan</p>`, icon: "warning", confirmButtonText: "Konfirmasi & Kembalikan", showCancelButton: true });
             if (!confirmDenda.isConfirmed) return false;
-            await catatDenda(loanId, loan.userId, denda, `Denda keterlambatan (${daysLate} hari)`, todayStr);
+            await catatDenda(loanId, loan.userId, denda, `Denda keterlambatan (${daysLate} hari @ Rp2.000)`, todayStr);
             toast("info", `Denda Rp ${denda.toLocaleString()} dicatat.`);
         }
         await updateDoc(loanRef, { status: "returned" });
